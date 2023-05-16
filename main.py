@@ -3,7 +3,7 @@ from Detection.apriltagdetector import runVideo
 from WebServer.server_manager import ServerManager
 
 def update(frame):
-    print("updated");
+    i=0;
 
 manager = ServerManager();
 manager.startServerInNewThread();

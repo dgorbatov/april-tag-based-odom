@@ -1,7 +1,9 @@
-from http.server import HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from io import BytesIO
+import os
+from PIL import Image;
 import threading
-
-from WebServer.server import StreamServer
+import cv2;
 
 # TODO: FIX THIS UGLY ASS SHIT
 hostName = "localhost"
@@ -35,8 +37,8 @@ class ServerManager:
                 
                 if (self.path == "/stream.png"):
                             # print("IN");
-                            # image = Image.fromarray(cv2.imread('image.png'));
-                            image = Image.fromarray(self_manager.currImage);
+                            image = Image.fromarray(cv2.imread('image.png'));
+                            # image = Image.fromarray(self_manager.currImage);
                             stream = BytesIO();
                             image.save(stream, format="PNG");
                             self.wfile.write(stream.getvalue());
