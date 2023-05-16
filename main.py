@@ -1,9 +1,10 @@
 from asyncio import wait
+from Detection.apriltagdetector import runVideo
 from WebServer.server_manager import ServerManager
 
+def update(frame):
+    print("updated");
 
-ServerManager().startServerInNewThread();
-
-i =0
-while True:
-    i = 1
+manager = ServerManager();
+manager.startServerInNewThread();
+runVideo(updateImage=update);

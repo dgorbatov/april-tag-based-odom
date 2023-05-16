@@ -1,3 +1,63 @@
-p1 {
-    color: red;
+body {
+    background-color: #F8F8F8;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+article {
+    height: 100vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#camera-info {
+    justify-content: space-between;
+    width: 60vw;
+}
+
+#camera-feed {
+    width: 40vw;
+    justify-content: space-evenly;
+}
+
+article * {
+    padding: 0;
+    margin: 0;
+    margin-left: 1vw; 
+}
+
+h1, h2 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+section {
+    height: 10vh;
+}
+
+p {
+    font-family: 'Mohave', sans-serif;
+    font-size: 1rem;
+}
+
+#main-info {
+    font-size: 1.5rem;
+    margin-bottom: 1vh;
+    margin-left: 0.3vw;
+}
+
+div {
+    width: 37vw;
+    height: 40vh;
+    background-color: black;
 }
