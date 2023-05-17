@@ -8,10 +8,10 @@ def runVideo(updateImage):
     cap.set(cv2.CAP_PROP_EXPOSURE,-1)
 
     detector = apriltag.Detector(options=apriltag.DetectorOptions(
-        families='tag16h5',
-        border=100, #Tag border size in pixels
+        families='tag36h11',
+        border=10, #Tag border size in pixels
         nthreads=4,
-        quad_decimate=2.0, #detection of quads can be done on a lower-resolution image,
+        quad_decimate=1.0, #detection of quads can be done on a lower-resolution image,
                         # improving speed at a cost of pose accuracy and a slight decrease in detection
                         # rate. Decoding the binary payload is still done at full resolution. Default is 1.0
         quad_blur=0.0, #What Gaussian blur should be applied to the segmented image (used for
@@ -25,15 +25,13 @@ def runVideo(updateImage):
     ));
 
     contrastMultiplier = 1.0;
-    brightnessMultiplier = 1.0;
+    brightnessMultiplier = 2.0;
 
-    while cv2.waitKey(1) == -1:
+    while True:
         ret, frame = cap.read()
         
         if ret:
-            lowResFrame = cv2.resize(frame, None, fx=0.1, fy=0.1, interpolation=cv2.INTER_AREA);
-            updateImage(lowResFrame);
-            frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA);
+            frame = cv2.resize(frame, None, fx=0.8, fy=0.8, interpolation=cv2.INTER_AREA);
             frame = cv2.convertScaleAbs(frame, contrastMultiplier, brightnessMultiplier);
             detections = detector.detect(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY));
             
@@ -61,8 +59,6 @@ def runVideo(updateImage):
                 tagFamily = r.tag_family.decode("utf-8")
                 cv2.putText(frame, tagFamily, (ptA[0], ptA[1] - 15),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-    
-            cv2.imshow('Input', frame);
-            
+                
+            updateImage(cv2.resize(frame, None, fx=0.4, fy=0.4, interpolation=cv2.INTER_AREA));
     cap.release()
-    cv2.destroyAllWindows();

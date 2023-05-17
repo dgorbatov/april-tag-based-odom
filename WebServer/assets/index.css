@@ -60,9 +60,12 @@ div {
     width: 37vw;
     height: 40vh;
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 img {
-    width: 20vw;
-    height: 20vh;
+    width: 90%;
+    height: 90%;
 }
