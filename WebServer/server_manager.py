@@ -37,8 +37,8 @@ class ServerManager:
                 
                 if (self.path == "/stream.png"):
                             # print("IN");
-                            image = Image.fromarray(cv2.imread('image.png'));
-                            # image = Image.fromarray(self_manager.currImage);
+                            # image = Image.fromarray(cv2.imread('image.png'));
+                            image = Image.fromarray(self_manager.currImage);
                             stream = BytesIO();
                             image.save(stream, format="PNG");
                             self.wfile.write(stream.getvalue());
@@ -67,6 +67,7 @@ class ServerManager:
                 with open(file, mode='r', encoding='utf-8') as f:
                     content = f.read()
                 return bytes(content, 'utf-8') 
+        return StreamServer;
 
     def _run(self):
         self.webServer = HTTPServer((hostName, serverPort), self.makeStreamServer())

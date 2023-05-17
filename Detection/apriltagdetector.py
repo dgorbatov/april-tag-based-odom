@@ -60,7 +60,6 @@ def runVideo(updateImage):
                 tagFamily = r.tag_family.decode("utf-8")
                 cv2.putText(frame, tagFamily, (ptA[0], ptA[1] - 15),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-                print("[INFO] tag family: {}".format(tagFamily))
     
             cv2.imshow('Input', frame);
             
