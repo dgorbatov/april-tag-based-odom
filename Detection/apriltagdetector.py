@@ -31,7 +31,8 @@ def runVideo(updateImage):
         ret, frame = cap.read()
         
         if ret:
-            updateImage(frame);
+            lowResFrame = cv2.resize(frame, None, fx=0.1, fy=0.1, interpolation=cv2.INTER_AREA);
+            updateImage(lowResFrame);
             frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA);
             frame = cv2.convertScaleAbs(frame, contrastMultiplier, brightnessMultiplier);
             detections = detector.detect(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY));

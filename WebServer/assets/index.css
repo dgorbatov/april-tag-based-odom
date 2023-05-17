@@ -61,3 +61,8 @@ div {
     height: 40vh;
     background-color: black;
 }
+
+img {
+    width: 20vw;
+    height: 20vh;
+}
